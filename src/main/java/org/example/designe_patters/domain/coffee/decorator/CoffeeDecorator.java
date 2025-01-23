@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public abstract class CoffeeDecorator implements Coffee {
-    Coffee decoratedCoffee;
+    protected Coffee decoratedCoffee;
 
     @Override
     public String getDescription() {
