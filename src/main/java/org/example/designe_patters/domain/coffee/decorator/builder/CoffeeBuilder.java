@@ -31,7 +31,7 @@ public class CoffeeBuilder {
         return this;
     }
     public String build(){
-        return "Description: "+this.coffee.getDescription()+" -> $"+this.coffee.cost();
+        return "Description: " + coffee.getDescription().block() + " -> $" + coffee.cost().block();
     }
 
 }

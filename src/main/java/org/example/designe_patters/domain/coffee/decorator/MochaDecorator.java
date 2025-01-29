@@ -1,18 +1,22 @@
 package org.example.designe_patters.domain.coffee.decorator;
 
+import reactor.core.publisher.Mono;
+
 public class MochaDecorator extends CoffeeDecorator{
     public MochaDecorator(Coffee decoratedCoffee) {
         super(decoratedCoffee);
     }
 
     @Override
-    public String getDescription() {
-        return decoratedCoffee.getDescription() +", with Mocha";
+    public Mono<String> getDescription() {
+        return decoratedCoffee.getDescription()
+                .map(description -> description+", with Mocha");
     }
 
     @Override
-    public Double cost() {
-        return decoratedCoffee.cost() + 1.0;
+    public Mono<Double> cost() {
+        return decoratedCoffee.cost()
+                .map(cost -> cost + 1.0);
     }
 
 }

@@ -3,28 +3,27 @@ package org.example.designe_patters.domain.coffee;
 import org.example.designe_patters.domain.coffee.decorator.Coffee;
 import org.example.designe_patters.domain.coffee.decorator.builder.CoffeeBuilder;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
 
 @Service
 public class SimpleCoffee implements Coffee {
 
     @Override
-    public String getDescription() {
-        return "Simple Coffee";
+    public Mono<String> getDescription() {
+        return Mono.just("Simple Coffee");
     }
 
     @Override
-    public Double cost() {
-        return 0.5;
+    public Mono<Double> cost() {
+        return Mono.just(0.5);
     }
 
-    public String getCustomCoffee() {
-        return new CoffeeBuilder()
-                .addCaramel()
-                .addSugar()
-                .addMilk()
+    public Mono<String> getCustomCoffee() {
+        return Mono.just(new CoffeeBuilder()
                 .addMocha()
+                .addMilk()
                 .addWippedCream()
-                .build();
+                .build());
     }
 
 }
